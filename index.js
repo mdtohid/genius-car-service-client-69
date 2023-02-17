@@ -46,6 +46,10 @@ async function run() {
         const serviceCollection = client.db("geniusCar").collection("service");
         const orderCollection = client.db("geniusCar").collection("order");
 
+        app.get('/', (req, res) => {
+            res.send('Assalamu alaikum everyone!!!!!!!')
+        })
+
         // AUTH
         app.post('/login', async (req, res) => {
             const user = req.body;
@@ -114,6 +118,10 @@ async function run() {
                 res.status(403).send('Forbidden access')
             }
         })
+
+        app.listen(port, () => {
+            console.log(`Example app listening on port ${port}`)
+        })
     }
     finally {
         // client.close();
@@ -121,15 +129,3 @@ async function run() {
 }
 
 run().catch(console.dir);
-
-
-app.get('/', (req, res) => {
-    res.send('Hello !')
-})
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
-
-
-// mongodb+srv://vercel-admin-user:3ZXmqoIaOCh6xdW4@cluster0.uiwbado.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
